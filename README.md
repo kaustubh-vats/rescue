@@ -45,7 +45,7 @@ cd rescue
 npm install
 ```
 
-3.  ** Configure environment variables**
+3. **Configure environment variables**
     - Create a `.env` file in the root directory for development:
 
     ```
