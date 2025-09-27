@@ -89,6 +89,14 @@ const App: React.FC = () => {
       )}
 
       {error && <div className="error">{error}</div>}
+
+      <h2 className="howto-heading">How to Use</h2>
+
+      {/* If YouTube video */}
+      <video className="video-wrapper" controls>
+        <source src="/help.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
 };

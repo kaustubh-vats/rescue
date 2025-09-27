@@ -109,6 +109,17 @@ textarea:focus {
   letter-spacing: 0.5px;
 }
 
+.video-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 768px) {
   .description {
     font-size: 1rem;
