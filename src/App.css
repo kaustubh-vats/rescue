@@ -1,0 +1,98 @@
+/* Global */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Card style */
+.card {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.card label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #555;
+}
+
+input[type="text"],
+textarea.encoded-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.encode-btn {
+  background: #007bff;
+}
+
+.encode-btn:hover {
+  background: #0056b3;
+}
+
+.decode-btn {
+  background: #28a745;
+}
+
+.decode-btn:hover {
+  background: #1e7e34;
+}
+
+/* Output */
+.output-card .decoded {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: monospace;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Error */
+.error {
+  color: #dc3545;
+  font-weight: 600;
+  margin-top: 10px;
+}
