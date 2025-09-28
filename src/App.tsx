@@ -8,10 +8,12 @@ const App: React.FC = () => {
   const [edited, setEdited] = useState("");
   const [decoded, setDecoded] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState([false, false]); // [encoding, decoding]
 
   const handleEncode = async () => {
     setError("");
     setDecoded("");
+    setLoading([true, loading[1]]);
     try {
       const res = await fetch(`${API_BASE}/encode`, {
         method: "POST",
@@ -23,11 +25,14 @@ const App: React.FC = () => {
       setEdited(data.encoded);
     } catch {
       setError("Failed to encode");
+    } finally {
+      setLoading([false, loading[1]]);
     }
   };
 
   const handleDecode = async () => {
     setError("");
+    setLoading([loading[0], true]);
     try {
       const res = await fetch(`${API_BASE}/decode`, {
         method: "POST",
@@ -39,8 +44,12 @@ const App: React.FC = () => {
       setDecoded(data.decoded);
     } catch {
       setError("Failed to decode");
+    } finally {
+      setLoading([loading[0], false]);
     }
   };
+
+  const isLoading = () => loading[0] || loading[1];
 
   return (
     <div className="app-container">
@@ -59,8 +68,11 @@ const App: React.FC = () => {
           placeholder="Type here..."
           onKeyDown={(e) => { if (e.key === 'Enter') handleEncode(); }}
         />
-        <button type="button" className="btn encode-btn" onClick={handleEncode}>
+        <button type="button" className="btn encode-btn" onClick={handleEncode} disabled={!input || isLoading()}>
           Encode
+          {loading[0] && (
+            <span className="loader" />
+          )}
         </button>
       </div>
 
@@ -75,8 +87,11 @@ const App: React.FC = () => {
             className="encoded-textarea"
             placeholder="Encoded string will appear here... Or enter your already encoded string."
           />
-          <button type="button" className="btn decode-btn" onClick={handleDecode}>
+          <button type="button" className="btn decode-btn" onClick={handleDecode} disabled={!edited || isLoading()}>
             Decode
+            {loading[1] && (
+              <span className="loader" />
+            )}
           </button>
         </div>
       )}
